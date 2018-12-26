@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hill.eshop.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.hill.eshop.model.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_account" property="userAccount" jdbcType="VARCHAR"/>
+        <result column="user_phone_number" property="userPhoneNumber" jdbcType="VARCHAR"/>
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR"/>
+        <result column="user_sex" property="userSex" jdbcType="INTEGER"/>
+        <result column="user_age" property="userAge" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="INTEGER"/>
+        <result column="version" property="version" jdbcType="INTEGER"/>
+        <result column="valid" property="valid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="queryAllUsers" resultMap="UserResultMap">
+        SELECT `sys_user`.`id`,
+                `sys_user`.`user_name`,
+                `sys_user`.`user_id`,
+                `sys_user`.`user_account`,
+                `sys_user`.`user_phone_number`,
+                `sys_user`.`user_email`,
+                `sys_user`.`user_sex`,
+                `sys_user`.`user_age`,
+                `sys_user`.`create_date`,
+                `sys_user`.`update_date`,
+                `sys_user`.`version`,
+                `sys_user`.`valid`
+            FROM `hill`.`sys_user`
+    </select>
+
+    <insert id="insertUser" parameterType="com.hill.eshop.model.User">
+        INSERT INTO `hill`.`sys_user`
+        (
+        `user_name`,
+        `user_id`,
+        `user_account`,
+        `user_phone_number`,
+        `user_email`,
+        `user_sex`,
+        `user_age`,
+        `create_date`,
+        `update_date`,
+        `version`,
+        `valid`)
+        VALUES
+        (
+        #{userName},
+        #{userId},
+        #{userAccount},
+        #{userPhoneNumber},
+        #{userEmail},
+        #{userSex},
+        #{userAge},
+        #{create_date},
+        #{updateDate},
+        0,
+        0);
+    </insert>
+</mapper>
