@@ -1,4 +1,3 @@
-/*
 package com.hill.eshop.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,4 +12,3 @@ public class RedisCacheTransfer {
         MybatisRedisCache.setJedisConnectionFactory(jedisConnectionFactory);
     }
 }
-*/

@@ -1,4 +1,3 @@
-/*
 package com.hill.eshop.redis;
 
 import com.hill.eshop.controller.UserController;
@@ -136,4 +135,3 @@ public class MybatisRedisCache implements Cache {
         return this.readWriteLock;
     }
 }
-*/
