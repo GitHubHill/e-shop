@@ -27,7 +27,7 @@ public class UserController {
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, OPTIONS, DELETE");
         // 响应头设置
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, x-requested-with, X-Custom-Header, HaiYi-Access-Token");
-        return userService.queryAllUsers(pageNum,pageSize);
+        return userService.getAllUsers(pageNum,pageSize);
     }
 
     @ResponseBody

@@ -6,7 +6,9 @@ import com.hill.eshop.model.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> queryAllUsers(int pageNum, int pageSize);
+    List<User> getAllUsers(int pageNum, int pageSize);
 
     int insertUser(User user);
+
+    User getUser(User user);
 }

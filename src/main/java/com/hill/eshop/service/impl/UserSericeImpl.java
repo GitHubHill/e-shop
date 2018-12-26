@@ -15,13 +15,18 @@ public class UserSericeImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> queryAllUsers(int pageNum, int pageSize) {
+    public List<User> getAllUsers(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        return userMapper.queryAllUsers();
+        return userMapper.getAllUsers();
     }
 
     @Override
     public int insertUser(User user) {
         return userMapper.insertUser(user);
+    }
+
+    @Override
+    public User getUser(User user) {
+        return userMapper.getUser(user);
     }
 }
