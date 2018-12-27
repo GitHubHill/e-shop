@@ -17,20 +17,30 @@
         <result column="valid" property="valid" jdbcType="INTEGER"/>
     </resultMap>
 
-    <select id="queryAllUsers" resultMap="UserResultMap">
-        SELECT `sys_user`.`id`,
-                `sys_user`.`user_name`,
-                `sys_user`.`user_id`,
-                `sys_user`.`user_account`,
-                `sys_user`.`user_phone_number`,
-                `sys_user`.`user_email`,
-                `sys_user`.`user_sex`,
-                `sys_user`.`user_age`,
-                `sys_user`.`create_date`,
-                `sys_user`.`update_date`,
-                `sys_user`.`version`,
-                `sys_user`.`valid`
+    <sql id="queryParam">
+        `sys_user`.`id`,
+        `sys_user`.`user_name`,
+        `sys_user`.`user_id`,
+        `sys_user`.`user_account`,
+        `sys_user`.`user_phone_number`,
+        `sys_user`.`user_email`,
+        `sys_user`.`user_sex`,
+        `sys_user`.`user_age`,
+        `sys_user`.`create_date`,
+        `sys_user`.`update_date`,
+        `sys_user`.`version`,
+        `sys_user`.`valid`
+    </sql>
+
+    <select id="getAllUsers" resultMap="UserResultMap">
+        SELECT <include refid="queryParam"/>
             FROM `hill`.`sys_user`
+    </select>
+
+    <select id="getUser" resultMap="UserResultMap">
+        select <include refid="queryParam"/> from `hill`.`sys_user` where 1=1
+        <if test="id != null and id != ''">and `sys_user`.`id` = #{id}</if>
+        /*...*/
     </select>
 
     <insert id="insertUser" parameterType="com.hill.eshop.model.User">
